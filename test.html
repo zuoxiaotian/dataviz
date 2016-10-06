@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.x {
+  pointer-events:none;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+
+.gridx .tick {
+    stroke: lightgrey;
+    opacity: 0.7;
+}
+.gridx .path {
+      stroke-width: 0;
+}
+
+.gridy .tick {
+    stroke: lightgrey;
+    opacity: 0.7;
+}
+.gridy .path {
+      stroke-width: 0;
+}
+
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="d3.tip.js"></script>
+
+<script src="multibarChart.js"></script>
+<script>
+    var data = [
+      {"Time": "2011 Q4", "New Wins": 11.9, "Net Growth": 6.1, "erosion": 15},
+      {"Time": "2012 Q1", "New Wins": 11.2, "Net Growth": 5.8, "erosion": 7},
+      {"Time": "2012 Q2", "New Wins": 11.1, "Net Growth": 5.4, "erosion": 4},
+      {"Time": "2012 Q3", "New Wins": 11.3, "Net Growth": 5.2, "erosion": 11},
+      {"Time": "2012 Q4", "New Wins": 11.4, "Net Growth": 5.3, "erosion": 30},
+      {"Time": "2013 Q1", "New Wins": 11.5, "Net Growth": 5.1, "erosion": 14},
+      {"Time": "2013 Q2", "New Wins": 11.2, "Net Growth": 4.9, "erosion": 45},
+      {"Time": "2013 Q3", "New Wins": 11.2, "Net Growth": 4.4, "erosion": 2},
+      {"Time": "2013 Q4", "New Wins": 11.3, "Net Growth": 5.2, "erosion": 2},
+      {"Time": "2014 Q1", "New Wins": 11.1, "Net Growth": 5.4, "erosion": 2},
+      {"Time": "2014 Q2", "New Wins": 11.4, "Net Growth": 5.6, "erosion": 2},
+      {"Time": "2014 Q3", "New Wins": 10.2, "Net Growth": 5.8, "erosion": 2},
+      {"Time": "2014 Q4", "New Wins": 11.4, "Net Growth": 6,   "erosion": 2},
+      {"Time": "2015 Q1", "New Wins": 11.1, "Net Growth": 6.1, "erosion": 2},
+      {"Time": "2015 Q2", "New Wins": 10.9, "Net Growth": 6.2, "erosion": 2},
+    ]
+  multibarChart.draw(data)
+  setInterval(function(){
+  data = [
+      {"Time": "2011 Q4", "New Wins": 10.9 + Math.random() * 2, "Net Growth": 3.1 + Math.random() * 2, "erosion": 15},
+      {"Time": "2012 Q1", "New Wins": 10.2 + Math.random() * 2, "Net Growth": 3.8 + Math.random() * 2, "erosion": 7},
+      {"Time": "2012 Q2", "New Wins": 10.1 + Math.random() * 2, "Net Growth": 3.4 + Math.random() * 2, "erosion": 4},
+      {"Time": "2012 Q3", "New Wins": 10.3 + Math.random() * 2, "Net Growth": 3.2 + Math.random() * 2, "erosion": 11},
+      {"Time": "2012 Q4", "New Wins": 10.4 + Math.random() * 2, "Net Growth": 3.3 + Math.random() * 2, "erosion": 30},
+      {"Time": "2013 Q1", "New Wins": 10.5 + Math.random() * 2, "Net Growth": 3.1 + Math.random() * 2, "erosion": 14},
+      {"Time": "2013 Q2", "New Wins": 10.2 + Math.random() * 2, "Net Growth": 2.9 + Math.random() * 2, "erosion": 45},
+      {"Time": "2013 Q3", "New Wins": 10.2 + Math.random() * 2, "Net Growth": 2.4 + Math.random() * 2, "erosion": 2},
+      {"Time": "2013 Q4", "New Wins": 10.3 + Math.random() * 2, "Net Growth": 3.2 + Math.random() * 2, "erosion": 2},
+      {"Time": "2014 Q1", "New Wins": 10.1 + Math.random() * 2, "Net Growth": 3.4 + Math.random() * 2, "erosion": 2},
+      {"Time": "2014 Q2", "New Wins": 10.4 + Math.random() * 2, "Net Growth": 3.6 + Math.random() * 2, "erosion": 2},
+      {"Time": "2014 Q3", "New Wins": 9.2 + Math.random() * 2, "Net Growth": 3.8 + Math.random() * 2, "erosion": 2},
+      {"Time": "2014 Q4", "New Wins": 9.4 + Math.random() * 2, "Net Growth": 4 + Math.random() * 2,   "erosion": 2},
+      {"Time": "2015 Q1", "New Wins": 9.1 + Math.random() * 2, "Net Growth": 4.1 + Math.random() * 2, "erosion": 2},
+      {"Time": "2015 Q2", "New Wins": 9.9 + Math.random() * 2, "Net Growth": 4.2 + Math.random() * 2, "erosion": 2},
+    ]
+    data = data.splice(0, 6 + Math.random() * 9);
+    multibarChart.update(data);
+  }, 5000);
+
+</script>
